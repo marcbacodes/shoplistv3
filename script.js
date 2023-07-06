@@ -100,8 +100,11 @@ shareIcon.addEventListener("click", shareList);
 
 function shareList() {
     var itemList = document.getElementById("item-list");
-    var items = Array.from(itemList.getElementsByTagName("li")).map(function (li) {
-        return li.textContent;
+    var listItems = itemList.querySelectorAll("li");
+
+    var items = Array.from(listItems).map(function (listItem) {
+        var itemText = listItem.querySelector(".item-text").textContent;
+        return itemText;
     });
 
     var text = "Shopping List:\n" + items.join("\n");
@@ -110,6 +113,3 @@ function shareList() {
     var whatsappLink = "https://wa.me/?text=" + encodedText;
     window.open(whatsappLink);
 }
-
-
-
