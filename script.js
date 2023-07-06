@@ -100,12 +100,13 @@ shareIcon.addEventListener("click", shareList);
 
 function shareList() {
     var itemList = document.getElementById("item-list");
-    var listItems = itemList.querySelectorAll("li");
+    var listItems = itemList.getElementsByTagName("li");
 
-    var items = Array.from(listItems).map(function (listItem) {
-        var itemText = listItem.querySelector(".item-text").textContent;
-        return itemText;
-    });
+    var items = [];
+    for (var i = 0; i < listItems.length; i++) {
+        var itemText = listItems[i].querySelector(".item-wrapper span").textContent;
+        items.push(itemText);
+    }
 
     var text = "Shopping List:\n" + items.join("\n");
 
